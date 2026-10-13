@@ -2,6 +2,7 @@ import React from 'react'
 import { FaGithub, FaArrowDown, FaEnvelope, FaReact, FaNodeJs } from 'react-icons/fa'
 import { SiMongodb, SiTailwindcss } from 'react-icons/si'
 import studentImage from '../assets/boy1.png'
+import Hero3D from '../components/Hero3D'
 import About from './About'
 import Services from './Sevices'
 import Project from './Project'
@@ -52,6 +53,9 @@ const Home = () => {
           <div className="hero-visual order-1 flex justify-center md:order-2">
             <div className="portrait-wrap">
               <div className="portrait-glow" />
+              <div className="hero3d-frame" aria-hidden="true">
+                <Hero3D />
+              </div>
               <div className="orbit orbit-one" aria-hidden="true" />
               <div className="orbit orbit-two" aria-hidden="true" />
               <div className="orbit orbit-three" aria-hidden="true" />
