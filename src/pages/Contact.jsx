@@ -1,43 +1,36 @@
 import React from 'react'
-import ContactForm from "../Common/ContactForm"
-import { MdOutlineInsertEmoticon } from "react-icons/md";
-import { GiLemon } from "react-icons/gi";
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
+import ContactForm from '../Common/ContactForm'
 
-const Contact = () => {
-  return (
-    <div className='bg-linear-to-br from-[#070707] via-[#31153c] to-[#470864]'>
-
-      <div className='w-11/12 lg:w-10/12 mx-auto py-20'>
-
-        <h1 className='text-3xl md:text-4xl text-gray-100 font-semibold'>
-          Contact
-        </h1>
-
-        <div className='flex flex-col lg:flex-row gap-10 mt-10'>
-
-          {/* LEFT SIDE */}
-          <div className='flex flex-col items-center lg:items-start justify-center text-center lg:text-left text-2xl md:text-3xl text-gray-100 font-semibold w-full lg:w-1/2 gap-6'>
-
-            <div className='flex items-center gap-4'>
-              <GiLemon className='text-yellow-400'/>
-              <p>Let's Create Something Amazing Together</p>
-            </div>
-
-            <MdOutlineInsertEmoticon className='text-4xl'/>
-
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className='w-full lg:w-1/2'>
-            <ContactForm />
-          </div>
-
-        </div>
-
+const Contact = () => (
+  <section id="contact" className="section-shell section-muted">
+    <div className="section-container">
+      <div className="section-heading">
+        <p className="eyebrow">Get in touch</p>
+        <h2>Let's build something <span className="gradient-text">meaningful</span></h2>
+        <p>Have an internship opportunity, project idea, or feedback? Send me a message.</p>
       </div>
-
+      <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="surface-card flex flex-col gap-6">
+          <h3 className="text-xl font-semibold text-white">Contact details</h3>
+          <a href="mailto:parmatmakumarr712@gmail.com" className="flex items-center gap-3 text-slate-300 transition hover:text-violet-300">
+            <FaEnvelope className="text-violet-300" /> parmatmakumarr712@gmail.com
+          </a>
+          <a href="https://github.com/ParmatmaKumar" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-slate-300 transition hover:text-violet-300">
+            <FaGithub className="text-violet-300" /> GitHub profile
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-slate-300 transition hover:text-violet-300">
+            <FaLinkedin className="text-violet-300" /> Find me on LinkedIn
+          </a>
+          <p className="border-t border-white/10 pt-5 text-sm leading-6 text-slate-500">The contact form opens your email app with a pre-filled message. It does not send data to a server.</p>
+        </div>
+        <ContactForm />
+      </div>
+      <footer className="mt-14 border-t border-white/10 pt-6 text-center text-sm text-slate-500">
+        © {new Date().getFullYear()} Parmatma Kumar. Built with React and Tailwind CSS.
+      </footer>
     </div>
-  )
-}
+  </section>
+)
 
 export default Contact

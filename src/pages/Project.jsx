@@ -1,20 +1,17 @@
 import React from 'react'
 import ProjectCard from '../Card/ProjectCard'
 
-const Project = () => {
-  return (
-    <div className="py-10 px bg-linear-to-br from-[#c213e9] via-[#31153c] to-[#40035d]">
-        <div className='w-10/12 mx-auto'>
-          <div className='flex flex-col items-center gap-5'>
-            <h1 className='text-4xl text-pink-200 font-bold'>My Projects</h1>
-            <p className='text-pink-200 font-semibold'>Discover the projects that showcase my passion for design and innovation</p>
-            <div className='mt-10'>
-                <ProjectCard/>
-            </div>
-        </div>
-        </div>
+const Project = () => (
+  <section id="projects" className="section-shell">
+    <div className="section-container">
+      <div className="section-heading">
+        <p className="eyebrow">Selected work</p>
+        <h2>Projects built with <span className="gradient-text">purpose</span></h2>
+        <p>A few projects that represent what I'm learning and building. Project links can be added as each repository is ready to share.</p>
+      </div>
+      <ProjectCard />
     </div>
-  )
-}
+  </section>
+)
 
 export default Project

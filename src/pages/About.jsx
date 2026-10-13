@@ -1,77 +1,46 @@
 import React from 'react'
-import { IoSparklesSharp } from "react-icons/io5"
-import { FaJsSquare, FaReact, FaNodeJs, FaJava } from 'react-icons/fa'
-import { SiMongodb } from 'react-icons/si'
-import boyImage from "../assets/boy22.png"
+import { FaGraduationCap, FaLightbulb } from 'react-icons/fa'
 
-const About = () => {
-  return (
-    <div className='bg-linear-to-br from-[#1c0936] via-[#31153c] to-[#070707]'>
+const skillGroups = [
+  { title: 'Frontend', skills: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Tailwind CSS', 'Redux'] },
+  { title: 'Backend', skills: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication'] },
+  { title: 'Database & Tools', skills: ['MongoDB', 'Git', 'GitHub', 'Postman'] },
+  { title: 'Programming', skills: ['C++', 'Java basics', 'Data Structures & Algorithms'] },
+]
 
-      <div className='w-11/12 lg:w-10/12 mx-auto flex flex-col lg:flex-row items-center gap-12 py-20'>
-
-        {/* LEFT IMAGE */}
-        <div className='flex justify-center w-full lg:w-[40%]'>
-          <img
-            src={boyImage}
-            alt="about"
-            className='w-62.5 md:w-[320px] lg:w-95'
-          />
-        </div>
-
-        {/* RIGHT CONTENT */}
-        <div className='flex flex-col gap-4 w-full lg:w-[60%]'>
-
-          <h1 className='text-3xl md:text-4xl font-bold text-gray-200'>
-            About Me
-          </h1>
-
-          <div className='flex flex-col gap-4 text-purple-300 font-semibold text-sm md:text-lg'>
-
-            <p>
-              Welcome to my portfolio! I'm a passionate MERN stack developer
-              dedicated to creating seamless and visually engaging digital
-              experiences.
-            </p>
-
-            <p>
-              My skills include building full-stack web applications using
-              modern technologies like React, Node.js, and MongoDB while
-              focusing on performance and user experience.
-            </p>
-
-            <div className='flex gap-2 items-start'>
-              <span className='mt-1 text-lg'><IoSparklesSharp /></span>
-              <p>
-                I am deeply committed to my work, investing creativity and
-                precision into every project to ensure a unique and effective
-                user experience.
-              </p>
-            </div>
-
-            {/* SKILLS */}
-            <div className='mt-6'>
-              <h2 className='text-white text-2xl md:text-3xl font-bold'>
-                Skills
-              </h2>
-
-              <div className='flex gap-6 mt-5 text-3xl md:text-5xl text-purple-400'>
-                <FaJsSquare />
-                <FaReact />
-                <FaNodeJs />
-                <SiMongodb />
-                <FaJava />
-              </div>
-
-            </div>
-
+const About = () => (
+  <section id="about" className="section-shell">
+    <div className="section-container">
+      <div className="section-heading">
+        <p className="eyebrow">A little about me</p>
+        <h2>Curious mind. <span className="gradient-text">Practical builder.</span></h2>
+        <p>I'm a Computer Science student focused on becoming a stronger full-stack developer through consistent learning and real projects.</p>
+      </div>
+      <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="surface-card flex flex-col justify-between gap-8">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-400/10 text-2xl text-violet-300"><FaGraduationCap /></div>
+          <div>
+            <h3 className="text-xl font-semibold text-white">Education & growth</h3>
+            <p className="mt-3 leading-7 text-slate-400">B.Tech in Computer Science and Engineering at Rungta College. Currently strengthening my development skills, DSA, and problem-solving fundamentals.</p>
+          </div>
+          <div className="flex items-start gap-3 border-t border-white/10 pt-5 text-slate-400">
+            <FaLightbulb className="mt-1 shrink-0 text-violet-300" />
+            <p className="text-sm leading-6">I learn best by building, debugging, and improving real applications.</p>
           </div>
         </div>
-
+        <div id="skills" className="grid gap-4 sm:grid-cols-2">
+          {skillGroups.map((group) => (
+            <div key={group.title} className="surface-card">
+              <h3 className="mb-4 font-semibold text-white">{group.title}</h3>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => <span key={skill} className="skill-chip">{skill}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-
     </div>
-  )
-}
+  </section>
+)
 
 export default About

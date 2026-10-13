@@ -1,42 +1,33 @@
-import React from "react";
-import { projectData } from "../Data/projectData";
+import React from 'react'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { projectData } from '../Data/projectData'
 
-const ProjectCard = () => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      {projectData.map((project) => (
-        <div
-          key={project.id}
-          className="flex flex-col bg-gray-800/40 p-4 rounded-md shadow-lg hover:shadow-xl transition duration-300"
-        >
-
-          {/* Image */}
-          <div className="w-full h-56 overflow-hidden rounded-md">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover hover:scale-105 transition duration-300"
-            />
-          </div>
-
-          {/* Title */}
-          <div className="flex justify-between items-center mt-4">
-            <span className="text-xl md:text-2xl text-gray-200 font-semibold">
-              {project.title}
-            </span>
-          </div>
-
-          {/* Description */}
-          <p className="text-pink-200 mt-2 text-sm md:text-base">
-            {project.description}
-          </p>
-
+const ProjectCard = () => (
+  <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    {projectData.map((project) => (
+      <article key={project.id} className="project-card">
+        <div className="relative h-48 overflow-hidden bg-slate-900">
+          <img src={project.image} alt={project.imageAlt || project.title} loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-105" />
+          <span className="absolute left-4 top-4 rounded-full border border-white/10 bg-[#09090f]/80 px-3 py-1 text-xs font-medium text-violet-200 backdrop-blur">{project.category}</span>
         </div>
-      ))}
+        <div className="flex flex-1 flex-col p-5">
+          <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+          <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{project.description}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.technologies.map((technology) => <span key={technology} className="skill-chip">{technology}</span>)}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-3 border-t border-white/10 pt-4">
+            {project.githubUrl ? (
+              <a href={project.githubUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-violet-300 transition hover:text-violet-200"><FaGithub /> Source code</a>
+            ) : (
+              <span className="text-sm text-slate-500">Repository link coming soon</span>
+            )}
+            {project.demoUrl && <a href={project.demoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-white"><FaExternalLinkAlt /> Live demo</a>}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+)
 
-    </div>
-  );
-};
-
-export default ProjectCard;
+export default ProjectCard

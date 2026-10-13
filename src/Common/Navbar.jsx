@@ -1,55 +1,60 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { BiLogoJava } from "react-icons/bi";
-import { HiMenu, HiX } from "react-icons/hi";
+import { Link } from 'react-scroll'
+import { FaCode } from 'react-icons/fa'
+import { HiMenu, HiX } from 'react-icons/hi'
+
+const navItems = [
+  { label: 'Home', to: 'home' },
+  { label: 'About', to: 'about' },
+  { label: 'Skills', to: 'skills' },
+  { label: 'Projects', to: 'projects' },
+  { label: 'Contact', to: 'contact' },
+]
 
 const Navbar = () => {
-
   const [open, setOpen] = useState(false)
 
+  const closeMenu = () => setOpen(false)
+
   return (
-    <div className='bg-linear-to-br from-[#69186b] via-[#591176] to-[#3d0059]'>
-      <div className='w-11/12 lg:w-10/12 mx-auto flex justify-between items-center p-3'>
-
-        {/* Logo */}
-        <div className='text-4xl md:text-5xl text-pink-100'>
-          <BiLogoJava />
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#09090f]/85 backdrop-blur-xl">
+      <nav className="mx-auto flex min-h-[76px] w-11/12 max-w-6xl items-center justify-between gap-4" aria-label="Main navigation">
+        <a href="#home" onClick={closeMenu} className="flex items-center gap-3 text-lg font-bold tracking-wide text-white">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/15 text-xl text-violet-300">
+            <FaCode />
+          </span>
+          <span>Parmatma<span className="text-violet-300">.dev</span></span>
+        </a>
+        <div className="hidden items-center gap-7 md:flex">
+          {navItems.map((item) => (
+            <a key={item.to} href={`#${item.to}`} className="text-sm font-medium text-slate-300 transition hover:text-violet-300">
+              {item.label}
+            </a>
+          ))}
         </div>
-
-        {/* Menu for md and lg */}
-        <div className='hidden md:flex gap-6 lg:gap-8 text-lg lg:text-xl text-pink-100 font-semibold'>
-          <Link to="/">Home</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/project">Project</Link>
-          <Link to="/review">Review</Link>
-          <Link to="/contact">Contact</Link>
-        </div>
-
-        {/* Button only for lg */}
-        <div className='hidden lg:block bg-pink-400/70 px-6 py-2 rounded-3xl text-lg font-semibold text-pink-200'>
-          <Link to="/contact">Contact Us</Link>
-        </div>
-
-        {/* Mobile Menu Icon */}
-        <div
-          className='md:hidden text-3xl text-pink-100 cursor-pointer'
-          onClick={() => setOpen(!open)}
+        <a href="#contact" className="primary-button hidden !px-5 !py-2.5 md:inline-flex">Let's talk</a>
+        <button
+          type="button"
+          className="rounded-lg border border-white/10 p-2 text-2xl text-slate-200 md:hidden"
+          onClick={() => setOpen((value) => !value)}
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={open}
         >
           {open ? <HiX /> : <HiMenu />}
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
+        </button>
+      </nav>
       {open && (
-        <div className='flex flex-col items-center gap-6 pb-6 md:hidden text-lg text-pink-100 font-semibold'>
-          <Link to="/">Home</Link>
-          <Link to="/services">Services</Link>
-          <Link to="/project">Project</Link>
-          <Link to="/review">Review</Link>
-          <Link to="/contact">Contact</Link>
+        <div className="border-t border-white/10 bg-[#0d0d16] px-[5.5%] py-4 md:hidden">
+          <div className="flex flex-col gap-1">
+            {navItems.map((item) => (
+              <a key={item.to} href={`#${item.to}`} onClick={closeMenu} className="rounded-lg px-3 py-3 text-slate-300 transition hover:bg-white/5 hover:text-violet-300">
+                {item.label}
+              </a>
+            ))}
+          </div>
         </div>
       )}
-    </div>
+    </header>
   )
 }
 

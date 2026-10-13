@@ -1,38 +1,39 @@
-import React from 'react'
-import { useForm } from 'react-hook-form';
-
+import React, { useState } from 'react'
+import { FaPaperPlane } from 'react-icons/fa'
 
 const ContactForm = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-    return (
+  const handleChange = (event) => {
+    setForm((current) => ({ ...current, [event.target.name]: event.target.value }))
+  }
 
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
-            <div className=''>
-                <div className=''>
-                    <p className='text-pink-100 text-xl '>Name</p>
-                    <input type="text" placeholder='Enter Your Name' className='outline-none mt-2 border-2 border-gray-400 p-2 rounded-md text-pink-100 w-full' />
-                </div>
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const subject = encodeURIComponent(`Portfolio message from ${form.name}`)
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)
+    window.location.href = `mailto:parmatmakumarr712@gmail.com?subject=${subject}&body=${body}`
+  }
 
-                <div className='mt-2'>
-                    <p className='text-pink-100 text-xl'>Email</p>
-                    <input type="email" placeholder='Enter Your Email' className='outline-none mt-2 p-2 rounded-md border-2 border-gray-400 text-pink-100 w-full' />
-                </div>
+  const inputClass = 'form-input'
 
-                <div className='mt-2'>
-                    <p className='text-pink-100 text-xl'>Message</p>
-                    <textarea name="Message" rows={5} cols={30} placeholder='Enter Message' className='outline-none mt-2 border-2 border-gray-400 p-2 rounded-md text-pink-100 w-full' ></textarea>
-                </div>
-
-                <button type='submit' className='bg-[#F43AB0] p-2 rounded-md mt-5 font-semibold cursor-pointer text-gray-200'>Send Message</button>
-            </div>
-        </form>
-
-    )
+  return (
+    <form onSubmit={handleSubmit} className="surface-card space-y-5">
+      <div>
+        <label htmlFor="name" className="form-label">Your name</label>
+        <input id="name" name="name" value={form.name} onChange={handleChange} className={inputClass} placeholder="Enter your name" autoComplete="name" required />
+      </div>
+      <div>
+        <label htmlFor="email" className="form-label">Email address</label>
+        <input id="email" name="email" type="email" value={form.email} onChange={handleChange} className={inputClass} placeholder="you@example.com" autoComplete="email" required />
+      </div>
+      <div>
+        <label htmlFor="message" className="form-label">Message</label>
+        <textarea id="message" name="message" value={form.message} onChange={handleChange} className={inputClass} rows={5} placeholder="Tell me a little about your message..." required />
+      </div>
+      <button type="submit" className="primary-button w-full sm:w-auto">Open email app <FaPaperPlane aria-hidden="true" /></button>
+    </form>
+  )
 }
 
 export default ContactForm

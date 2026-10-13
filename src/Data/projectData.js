@@ -1,29 +1,35 @@
-// projectData.js
-
 export const projectData = [
   {
     id: 1,
-    title: "Modern E-Commerce Platform",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d",
-    description:
-      "A fully responsive online shopping platform with product filtering, secure checkout, and user authentication. Built using React and Node.js, this project focuses on seamless user experience and optimized performance.",
+    title: 'Online Education Platform',
+    category: 'Full Stack Web App',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Laptop and online learning workspace',
+    description: 'An online learning platform built around course discovery and learning workflows, with role-based experiences for students and instructors.',
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    githubUrl: '',
+    demoUrl: '',
   },
   {
     id: 2,
-    title: "Smart Task Manager",
-    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b",
-    description:
-      "A productivity application that allows users to create, organize, and track daily tasks. Features include drag-and-drop functionality, deadline reminders, and progress tracking dashboards.",
+    title: 'ChatWave',
+    category: 'Real-time Communication',
+    image: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Messaging application on a phone',
+    description: 'A real-time chat application exploring live messaging, online user status, and audio/video calling using Socket.IO and WebRTC.',
+    technologies: ['React', 'Express', 'MongoDB', 'Socket.IO', 'WebRTC'],
+    githubUrl: '',
+    demoUrl: '',
   },
   {
     id: 3,
-    title: "Personal Portfolio Website",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8",
-    description:
-      "A clean and modern personal portfolio website showcasing skills, projects, and contact information. Designed with a minimal UI and smooth animations to enhance user engagement.",
+    title: 'Personal Portfolio',
+    category: 'Personal Website',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Web developer workspace with code on a screen',
+    description: 'A responsive portfolio to introduce my skills, share projects, and make it easy for recruiters and collaborators to contact me.',
+    technologies: ['React', 'Vite', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/ParmatmaKumar/Portfolio',
+    demoUrl: '',
   },
-  
-  
-];
-
- 
+]
